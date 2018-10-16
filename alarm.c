@@ -15,12 +15,14 @@ int main(int argc, char *argv[])
     printf("Waiting for reset\n");
     digitalWrite (1, HIGH);
     digitalWrite (2, LOW);
+
     while(digitalRead(0) == 1);
     printf("Alarms off!\n");
     ifttt("http://red.eecs.yorku.ca:8080/trigger/event/with/key/214438469", "Alarms Off", "shiyi", "du");
     digitalWrite (2, HIGH);
     digitalWrite (1, LOW);
     printf("Waiting for event\n");
+
     while(digitalRead(0) == 0);
     printf("Motion Detected! Trying to connect to server\n");
     ifttt("http://red.eecs.yorku.ca:8080/trigger/event/with/key/214438469", "Motion Detected", "shiyi", "du");
